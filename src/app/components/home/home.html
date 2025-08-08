@@ -1,0 +1,5 @@
+<p>Presupuesto</p>
+<form [formGroup]="form">
+<app-product [listProducts]="listProducts" [selectedProducts]="selected" ></app-product>
+<p>Total: {{ total() }} €</p>
+</form>
