@@ -1,0 +1,21 @@
+<div class="panel">
+    <h3>Configuración Página Web</h3>
+    <label> Páginas: </label>
+
+    <input type="number" min="0" [value]="pages()" (input)="onPagesChange($event.target.value)">
+    <!-- <input type="number" min="1" [value]="pages()" (input)="onPagesChange(($event.target as HTMLInputElement).value)"> -->
+    <button mat-icon-button (click)="openHelp('Número de páginas', 'Cantidad total de páginas que tendrá la web.')"
+        aria-label="Información sobre páginas">
+        <mat-icon>info</mat-icon>
+    </button>
+
+    <label> Lenguaje:</label>
+    <input type="number" min="0" [value]="languages()" (input)="onLanguagesChange($event.target.value)">
+
+    <button mat-icon-button (click)="openHelp('Idiomas', 'Número de idiomas en los que se traducirá la web.')"
+        aria-label="Información sobre idiomas">
+        <mat-icon>info</mat-icon>
+    </button>
+
+    <!-- <p>Coste web: {{ webCost=0 }} €</p> -->
+</div>

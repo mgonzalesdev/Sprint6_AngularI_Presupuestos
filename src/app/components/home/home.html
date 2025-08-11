@@ -1,5 +1,5 @@
 <p>Presupuesto</p>
 <form [formGroup]="form">
-<app-product [listProducts]="listProducts" [selectedProducts]="selected" ></app-product>
+<app-product [listProducts]="listProducts" [selectedProducts]="selected" (webCostChanged)="webCost.set($event)"></app-product>
 <p>Total: {{ total() }} €</p>
 </form>

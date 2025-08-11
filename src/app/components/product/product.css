@@ -1,6 +1,17 @@
-.card-product
- {
+.list-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.card {
+    width: 60%;
+}
+
+.card-product {
     display: flex;
     align-items: center;
     justify-content: space-around;
+
 }

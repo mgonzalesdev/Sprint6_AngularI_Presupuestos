@@ -1,17 +1,22 @@
 <p>Productos</p>
-
-@for (product of listProducts(); track product.id) {
-<mat-card>
-    <div class="card-product">
-        <div class="card-description">
-            <h2>{{ product.name }}</h2>
-            <p>{{product.description}}</p>
+<div class="list-products">
+    @for (product of listProducts(); track product.id) {
+    <mat-card class="card">
+        <div class="card-product">
+            <div class="card-description">
+                <h2>{{ product.name }}</h2>
+                <p>{{product.description}}</p>
+            </div>
+            <div class="card-price">{{ product.price }}</div>
+            <div class="card-select">
+                <mat-checkbox [checked]="isSelected(product.id)"
+                    (change)="onToggle(product.id, $event.checked)">Selecionar
+                </mat-checkbox>
+            </div>
+            @if (product.id == 3 && isSelected(product.id)) {
+            <app-panel (webCostChanged)="webCostChanged.emit($event)"></app-panel>
+            }
         </div>
-        <div class="card-price">{{ product.price }}</div>
-        <div class="card-select">
-            <mat-checkbox [checked]="isSelected(product.id)" (change)="onToggle(product.id, $event.checked)">Selecionar
-            </mat-checkbox>
-        </div>
-    </div>
-</mat-card>
-}
+    </mat-card>
+    }
+</div>
