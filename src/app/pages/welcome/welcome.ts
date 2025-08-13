@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Budgets } from '../budgets/budgets';
+//import { Budgets } from '../budgets/budgets';
 
 @Component({
   selector: 'app-welcome',
-  imports: [Budgets],
+  imports: [],
   templateUrl: './welcome.html',
   styleUrl: './welcome.css'
 })
