@@ -6,4 +6,5 @@ export interface IBudget {
   email: string;
   products: IProduct[];
   totalCost: number;
+  date: Date;
 }

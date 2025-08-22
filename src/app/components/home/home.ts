@@ -43,7 +43,8 @@ export class Home {
       phone: this.form.value.phone!,
       email: this.form.value.email!,
       products: this.listProducts.filter(p => this.selected().includes(p.id)),
-      totalCost: this.total()
+      totalCost: this.total(),
+      date: new Date()
     }
     this.budgetService.saveBudget(budget);
     console.log('Presupuestos guardados:', this.budgetService.getBudgets());
