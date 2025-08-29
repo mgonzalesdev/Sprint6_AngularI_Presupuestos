@@ -1,4 +1,4 @@
-import { Component, input, Signal, WritableSignal,output } from '@angular/core';
+import { Component, input, Signal, WritableSignal, output } from '@angular/core';
 import { IProduct } from '../../models/iproduct';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -17,7 +17,13 @@ import { Panel } from '../panel/panel';
 export class Product {
   listProducts = input<IProduct[]>([]);
   selectedProducts = input<WritableSignal<number[]> | undefined>();
-webCostChanged = output<number>();
+
+  pages = input<number>(0);
+  languages = input<number>(0);
+
+  //webCostChanged = output<number>();
+  pagesChanged = output<number>();
+  languagesChanged = output<number>();
 
   get selectedIds(): number[] {
     return this.selectedProducts?.()?.() ?? [];
@@ -37,9 +43,20 @@ webCostChanged = output<number>();
       : current.filter(id => id !== productId);
 
     signal.set(updated);
-        if (productId === 3 && !checked) {
-      this.webCostChanged.emit(0);
+    if (productId === 3 && !checked) {
+     // this.webCostChanged.emit(0);
+
+      this.pagesChanged.emit(0);
+      this.languagesChanged.emit(0);
     }
+  }
+
+  onPagesChanged(pages: number) {
+    this.pagesChanged.emit(pages);
+  }
+
+  onLanguagesChanged(lang: number) {
+    this.languagesChanged.emit(lang);
   }
 
   ngOnInit() {

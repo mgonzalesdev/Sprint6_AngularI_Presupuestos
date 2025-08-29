@@ -1,4 +1,4 @@
-<p>Presupuesto</p>
+<!-- <p>Presupuesto</p>
 <form [formGroup]="form" (ngSubmit)="saveBudget()">
     <app-product [listProducts]="listProducts" [selectedProducts]="selected"
         (webCostChanged)="webCost.set($event)"></app-product>
@@ -13,6 +13,65 @@
     <label>Email:</label>
     <input type="email" formControlName="email" />
 
-    <button type="submit" [disabled]="form.invalid">Guardar presupuesto</button>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Guardar presupuesto
+    </button>
 </form>
-<app-budgets-list></app-budgets-list>
+<app-budgets-list></app-budgets-list> -->
+<div class="main-container">
+    <form [formGroup]="form" (ngSubmit)="saveBudget()">
+        <div class="row-container">
+            <app-product [listProducts]="listProducts" 
+                [selectedProducts]="selected" 
+                [pages]="pages()"
+                [languages]="languages()" 
+               
+                (pagesChanged)="onPagesChange($event)"
+                (languagesChanged)="onLanguagesChange($event)">
+            </app-product>
+
+            <p class="total">Total: {{ total() }} €</p>
+        </div>
+        <div class="content-inputs-budgets">
+            <h2>Crear Presupuesto</h2>
+            <div class="inputs-row">
+                <!-- Nombre del cliente -->
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Nombre del cliente/a</mat-label>
+                    <input matInput formControlName="clientName" placeholder="Ej. Juan Pérez">
+                    @if (form.get('clientName')?.hasError('required')) {
+                    <mat-error>El nombre es <strong>obligatorio</strong></mat-error>
+                    }
+                </mat-form-field>
+
+                <!-- Teléfono -->
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput type="text" formControlName="phone" placeholder="Ej. 612345678">
+                    @if (form.get('phone')?.hasError('required')) {
+                    <mat-error>El teléfono es <strong>obligatorio</strong></mat-error>
+                    }
+                </mat-form-field>
+
+                <!-- Email -->
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email" placeholder="Ej. correo@ejemplo.com">
+                    @if (form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')) {
+                    <mat-error>Introduce un email válido</mat-error>
+                    }
+                    @if (form.get('email')?.hasError('required')) {
+                    <mat-error>El email es <strong>obligatorio</strong></mat-error>
+                    }
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+                    Guardar presupuesto
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <app-budgets-list> </app-budgets-list>
+</div>

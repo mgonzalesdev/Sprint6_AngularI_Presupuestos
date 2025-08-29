@@ -1,8 +1,10 @@
 <div class="panel">
     <h3>Configuración Página Web</h3>
     <label> Páginas: </label>
-
+<mat-form-field>
+    <mat-label>Favorite food</mat-label>
     <input type="number" min="0" [value]="pages()" (input)="onPagesChange($event.target.value)">
+</mat-form-field>
     <!-- <input type="number" min="1" [value]="pages()" (input)="onPagesChange(($event.target as HTMLInputElement).value)"> -->
     <button mat-icon-button (click)="openHelp('Número de páginas', 'Cantidad total de páginas que tendrá la web.')"
         aria-label="Información sobre páginas">

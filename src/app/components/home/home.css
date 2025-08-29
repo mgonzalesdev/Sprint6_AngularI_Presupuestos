@@ -1,0 +1,32 @@
+/* Contenedor principal del formulario */
+app-budgets-list {
+    width: 100%;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+.main-container form{
+    width: 100%;
+}
+
+.total {
+    text-align: right;
+    margin-right: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.inputs-row {
+    display: flex;
+    justify-content: end;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.content-inputs-budgets{
+    padding-block: 2rem;
+}
