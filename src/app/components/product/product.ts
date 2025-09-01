@@ -21,7 +21,6 @@ export class Product {
   pages = input<number>(0);
   languages = input<number>(0);
 
-  //webCostChanged = output<number>();
   pagesChanged = output<number>();
   languagesChanged = output<number>();
 
@@ -44,7 +43,6 @@ export class Product {
 
     signal.set(updated);
     if (productId === 3 && !checked) {
-     // this.webCostChanged.emit(0);
 
       this.pagesChanged.emit(0);
       this.languagesChanged.emit(0);
@@ -60,8 +58,8 @@ export class Product {
   }
 
   ngOnInit() {
-    const signal = this.selectedProducts?.(); // Primer () -> accede al WritableSignal
-    const ids = signal?.();                   // Segundo () -> accede al array de números
+    const signal = this.selectedProducts?.(); 
+    const ids = signal?.();                   
     console.log('IDs seleccionados inicialmente:', ids);
   }
 

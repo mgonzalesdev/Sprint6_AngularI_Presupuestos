@@ -20,22 +20,17 @@ export class BudgetsList {
   displayedColumns: string[] = ['clientName', 'phone', 'email', 'products', 'totalCost', 'date'];
   dataSource = new MatTableDataSource<IBudget>([]);
 
-  // Sin AfterViewInit: static:true permite tener el ViewChild listo en ngOnInit
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   constructor() {
-    // Reactividad real: cuando cambie la signal en el servicio, refrescamos la tabla
     effect(() => {
-      const budgets = this.budgetService.getBudgets()(); // <-- OJO: leer la signal
-      this.dataSource.data = budgets;                    // actualiza la tabla
+      const budgets = this.budgetService.getBudgets()(); 
+      this.dataSource.data = budgets;                   
     });
   }
 
   ngOnInit(): void {
-    // Conectar el sort una vez (sin orden inicial)
     this.dataSource.sort = this.sort;
-
-    // (Opcional) Mejorar el ordenado por fecha y nombre
     this.dataSource.sortingDataAccessor = (item: IBudget, property: string) => {
       switch (property) {
         case 'clientName': return item.clientName?.toLowerCase() ?? '';
@@ -44,7 +39,6 @@ export class BudgetsList {
       }
     };
 
-    // Filtro solo por nombre de cliente
     this.dataSource.filterPredicate = (data: IBudget, filter: string) =>
       data.clientName?.toLowerCase().includes(filter);
   }

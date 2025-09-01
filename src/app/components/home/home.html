@@ -1,24 +1,3 @@
-<!-- <p>Presupuesto</p>
-<form [formGroup]="form" (ngSubmit)="saveBudget()">
-    <app-product [listProducts]="listProducts" [selectedProducts]="selected"
-        (webCostChanged)="webCost.set($event)"></app-product>
-    <p>Total: {{ total() }} €</p>
-
-    <label>Nombre del cliente/a:</label>
-    <input type="text" formControlName="clientName" />
-
-    <label>Teléfono:</label>
-    <input type="text" formControlName="phone" />
-
-    <label>Email:</label>
-    <input type="email" formControlName="email" />
-
-
-    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-        Guardar presupuesto
-    </button>
-</form>
-<app-budgets-list></app-budgets-list> -->
 <div class="main-container">
     <form [formGroup]="form" (ngSubmit)="saveBudget()">
         <div class="row-container">

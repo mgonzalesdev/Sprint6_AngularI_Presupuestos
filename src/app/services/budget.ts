@@ -6,7 +6,6 @@ import { IBudget } from '../models/ibudget';
   providedIn: 'root'
 })
 export class BudgetService {
-  //private budgets: IBudget[] = [];
     private budgets = signal<IBudget[]>([]);
 
   getWebCost(languages: number, pages: number): number {
@@ -20,8 +19,8 @@ export class BudgetService {
 
     return baseCost + webCost;
   }
+  
   saveBudget(budget: IBudget) {
-   // this.budgets.push(budget);
    this.budgets.update(b => [...b, budget]);
   }
 

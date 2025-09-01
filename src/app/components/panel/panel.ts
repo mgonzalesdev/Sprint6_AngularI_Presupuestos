@@ -18,20 +18,14 @@ export class Panel {
   initialPages = input<number>(0);
   initialLanguages = input<number>(0);
 
-  //webCostChanged = output<number>();
   pagesChanged = output<number>();
   languagesChanged = output<number>();
 
   constructor(private budgetService: BudgetService, private dialog: MatDialog) {
-    // this.emitCost();
   }
   ngOnInit() {
-    // Asignamos valores iniciales que vienen desde la URL
     this.pages.set(this.initialPages());
     this.languages.set(this.initialLanguages());
-
-    // Emitimos coste inicial
-   // this.emitCost();
   }
 
 
@@ -39,20 +33,14 @@ export class Panel {
     let pages = Number(value);
     this.pages.set(pages);
     this.pagesChanged.emit(pages);
-    //this.emitCost();
   }
 
   onLanguagesChange(value: string) {
     let languages = Number(value)
     this.languages.set(languages);
     this.languagesChanged.emit(languages);
-   // this.emitCost();
   }
 
-  // private emitCost() {
-  //   const cost = this.budgetService.getWebCost(this.pages(), this.languages());
-  //   this.webCostChanged.emit(cost);
-  // }
   openHelp(title: string, message: string) {
     this.dialog.open(HelpDialog, {
       data: { title, message }

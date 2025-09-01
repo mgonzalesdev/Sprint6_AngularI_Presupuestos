@@ -17,10 +17,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './home.css'
 })
 export class Home {
+
   protected listProducts: IProduct[] = [];
   protected selected = signal<number[]>([]);
 
-  //protected webCost = signal(0);
   protected pages = signal(0);
   protected languages = signal(0);
 
@@ -42,7 +42,6 @@ export class Home {
 
     this.loadFromUrl();
 
-    // Cada vez que cambian los productos o webCost, actualizamos la URL
     effect(() => {
       this.updateUrl();
     });
@@ -51,7 +50,6 @@ export class Home {
   private loadFromUrl() {
     this.route.queryParamMap.subscribe(params => {
       const productsParam = params.get('products');
-      //  const webCostParam = params.get('webCost');
 
       const pagesParam = params.get('pages');
       const languagesParam = params.get('languages');
@@ -62,9 +60,6 @@ export class Home {
         this.selected.set(ids);
       }
 
-      // if (webCostParam) {
-      //   this.webCost.set(Number(webCostParam));
-      // }
       if (pagesParam) {
         this.pages.set(Number(pagesParam));
       }
@@ -74,7 +69,7 @@ export class Home {
     });
   }
 
-  // Actualizar la URL cuando hay cambios
+  // Actualiza la URL cuando hay cambios
   private updateUrl() {
     const queryParams: any = {};
 
@@ -82,9 +77,7 @@ export class Home {
       queryParams.products = this.selected().join(',');
     }
 
-    // if (this.webCost() > 0) {
-    //   queryParams.webCost = this.webCost();
-    // }
+
     if (this.pages() > 0) queryParams.pages = this.pages();
     if (this.languages() > 0) queryParams.languages = this.languages();
 
@@ -128,7 +121,6 @@ export class Home {
     console.log('Presupuestos guardados:', this.budgetService.getBudgets());
     this.form.reset();
     this.selected.set([]);
-    // this.webCost.set(0);
     this.pages.set(0);
     this.languages.set(0);
   }
