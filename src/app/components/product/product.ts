@@ -16,10 +16,10 @@ import { Panel } from '../panel/panel';
 })
 export class Product {
   listProducts = input<IProduct[]>([]);
-  selectedProducts = input<WritableSignal<number[]> | undefined>();
+  selectedProducts = input<WritableSignal<number[]> | null>(null);
 
-  pages = input<number>(0);
-  languages = input<number>(0);
+  pages = input<number>(1);
+  languages = input<number>(1);
 
   pagesChanged = output<number>();
   languagesChanged = output<number>();
@@ -42,10 +42,11 @@ export class Product {
       : current.filter(id => id !== productId);
 
     signal.set(updated);
-    if (productId === 3 && !checked) {
-
-      this.pagesChanged.emit(0);
-      this.languagesChanged.emit(0);
+    const index = this.listProducts().find(product => product.custom_details === true);
+    const idProductCustom = index ? index.id : -1;
+    if (productId === idProductCustom && !checked) {
+      this.pagesChanged.emit(1);
+      this.languagesChanged.emit(1);
     }
   }
 
@@ -58,8 +59,8 @@ export class Product {
   }
 
   ngOnInit() {
-    const signal = this.selectedProducts?.(); 
-    const ids = signal?.();                   
+    const signal = this.selectedProducts?.();
+    const ids = signal?.();
     console.log('IDs seleccionados inicialmente:', ids);
   }
 

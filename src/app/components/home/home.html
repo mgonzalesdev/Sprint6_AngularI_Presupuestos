@@ -1,12 +1,9 @@
 <div class="main-container">
+    <h2 class="title-page">Calcula tu presupuesto</h2>
     <form [formGroup]="form" (ngSubmit)="saveBudget()">
         <div class="row-container">
-            <app-product [listProducts]="listProducts" 
-                [selectedProducts]="selected" 
-                [pages]="pages()"
-                [languages]="languages()" 
-               
-                (pagesChanged)="onPagesChange($event)"
+            <app-product [listProducts]="listProducts" [selectedProducts]="selected" [pages]="pages()"
+                [languages]="languages()" (pagesChanged)="onPagesChange($event)"
                 (languagesChanged)="onLanguagesChange($event)">
             </app-product>
 
@@ -18,7 +15,8 @@
                 <!-- Nombre del cliente -->
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Nombre del cliente/a</mat-label>
-                    <input matInput formControlName="clientName" placeholder="Ej. Juan Pérez">
+                    <input matInput formControlName="clientName" placeholder="Ej. Juan Pérez" required
+                        [errorStateMatcher]="customMatcher">
                     @if (form.get('clientName')?.hasError('required')) {
                     <mat-error>El nombre es <strong>obligatorio</strong></mat-error>
                     }
@@ -27,7 +25,8 @@
                 <!-- Teléfono -->
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Teléfono</mat-label>
-                    <input matInput type="text" formControlName="phone" placeholder="Ej. 612345678">
+                    <input matInput type="text" formControlName="phone" placeholder="Ej. 612345678"
+                        [errorStateMatcher]="customMatcher">
                     @if (form.get('phone')?.hasError('required')) {
                     <mat-error>El teléfono es <strong>obligatorio</strong></mat-error>
                     }
@@ -36,12 +35,17 @@
                 <!-- Email -->
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Email</mat-label>
-                    <input matInput type="email" formControlName="email" placeholder="Ej. correo@ejemplo.com">
-                    @if (form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')) {
-                    <mat-error>Introduce un email válido</mat-error>
-                    }
-                    @if (form.get('email')?.hasError('required')) {
-                    <mat-error>El email es <strong>obligatorio</strong></mat-error>
+                    <input matInput type="email" formControlName="email" placeholder="Ej. correo@ejemplo.com"
+                        [errorStateMatcher]="customMatcher" required>
+                    @if (form.get('email')?.errors) {
+                    <mat-error>
+                        @if (form.get('email')?.hasError('required')) {
+                        <span>El correo es **obligatorio**.</span>
+                        }
+                        @if (form.get('email')?.hasError('email')) {
+                        <span>Ingrese un formato de correo **válido**.</span>
+                        }
+                    </mat-error>
                     }
                 </mat-form-field>
 

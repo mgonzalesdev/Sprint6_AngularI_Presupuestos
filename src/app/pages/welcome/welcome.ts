@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-//import { Budgets } from '../budgets/budgets';
+import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'app-welcome',
-  imports: [],
+  imports: [RouterLink, MatButtonModule],
   templateUrl: './welcome.html',
   styleUrl: './welcome.css'
 })

@@ -24,7 +24,7 @@ export class BudgetsList {
 
   constructor() {
     effect(() => {
-      const budgets = this.budgetService.getBudgets()(); 
+      const budgets = this.budgetService.getBudgets(); 
       this.dataSource.data = budgets;                   
     });
   }

@@ -1,4 +1,3 @@
-<h2>Productos</h2>
 <div class="list-products">
     @for (product of listProducts(); track product.id) {
     <mat-card class="card">
@@ -13,10 +12,9 @@
                     (change)="onToggle(product.id, $event.checked)">Selecionar
                 </mat-checkbox>
             </div>
-            @if (product.id == 3 && isSelected(product.id)) {
+            @if (product.custom_details && isSelected(product.id)) {
             <div class="content-panel">
-                <app-panel [initialPages]="pages()" [initialLanguages]="languages()"
-                    
+                <app-panel [initialPages]="pages()" [initialLanguages]="languages()"                    
                     (pagesChanged)="onPagesChanged($event)"
                     (languagesChanged)="onLanguagesChanged($event)"></app-panel>
             </div>

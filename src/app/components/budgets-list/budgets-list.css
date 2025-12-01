@@ -1,4 +1,11 @@
-.content-search {
-    display: flex;
-    justify-content: end;
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.list-budget{
+  padding-block: 2rem;
 }

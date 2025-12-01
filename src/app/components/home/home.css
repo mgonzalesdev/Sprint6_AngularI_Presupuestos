@@ -2,6 +2,7 @@
 app-budgets-list {
     width: 100%;
 }
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -9,15 +10,17 @@ app-budgets-list {
     width: 80%;
     margin: 0 auto;
 }
-.main-container form{
+
+.main-container form {
     width: 100%;
 }
 
 .total {
     text-align: right;
     margin-right: 30px;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
+    padding-block: 2rem;
 }
 
 .inputs-row {
@@ -27,6 +30,32 @@ app-budgets-list {
     gap: 10px;
 }
 
-.content-inputs-budgets{
-    padding-block: 2rem;
+.content-inputs-budgets {
+    padding-block: 1.5rem;
+}
+
+.title-page {
+    padding-block: 1.5rem;
+}
+
+.inputs-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.inputs-row mat-form-field.full-width {
+    flex-grow: 1;
+}
+
+@media (max-width: 600px) {
+    .inputs-row {
+        flex-direction: column;
+    }
+
+    .inputs-row mat-form-field,
+    .inputs-row button {
+        width: 100%;
+        flex-basis: auto;
+    }
 }

@@ -5,6 +5,7 @@ export interface IBudget {
   phone: string;
   email: string;
   products: IProduct[];
+  details:string,
   totalCost: number;
   date: Date;
 }
