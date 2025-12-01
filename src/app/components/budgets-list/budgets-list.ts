@@ -20,12 +20,12 @@ export class BudgetsList {
   displayedColumns: string[] = ['clientName', 'phone', 'email', 'products', 'totalCost', 'date'];
   dataSource = new MatTableDataSource<IBudget>([]);
 
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor() {
     effect(() => {
-      const budgets = this.budgetService.getBudgets(); 
-      this.dataSource.data = budgets;                   
+      const budgets = this.budgetService.getBudgets();
+      this.dataSource.data = budgets;
     });
   }
 
@@ -42,10 +42,15 @@ export class BudgetsList {
     this.dataSource.filterPredicate = (data: IBudget, filter: string) =>
       data.clientName?.toLowerCase().includes(filter);
   }
-
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+  }
   applyFilter(event: Event) {
     const value = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.dataSource.filter = value;
+    console.log('Filtro aplicado:', value);
+    console.log('Resultados filtrados:', this.dataSource.filteredData.length);
+ 
   }
 
   formatProducts(products: any[]): string {

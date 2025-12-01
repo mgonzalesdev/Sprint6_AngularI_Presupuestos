@@ -2,7 +2,7 @@
     <h3>Configuración Página Web</h3>
     <mat-form-field>
         <mat-label>Páginas:</mat-label>
-        <input matInput type="number" min="1" [value]="pages()" (input)="onPagesChange($event.target.value)">
+        <input matInput type="number" min="1" [value]="initialPages()" (input)="onPagesChange($event.target.value)">
     </mat-form-field>
     <button mat-icon-button type="button" (click)="openHelp('Número de páginas', 'Cantidad total de páginas que tendrá la web.')"
         aria-label="Información sobre páginas">
@@ -10,7 +10,7 @@
     </button>
     <mat-form-field>
         <mat-label>Lenguaje:</mat-label>
-        <input matInput type="number" min="1" [value]="languages()" (input)="onLanguagesChange($event.target.value)">
+        <input matInput type="number" min="1" [value]="initialLanguages()" (input)="onLanguagesChange($event.target.value)">
     </mat-form-field>
     <button mat-icon-button type="button" (click)="openHelp('Idiomas', 'Número de idiomas en los que se traducirá la web.')"
         aria-label="Información sobre idiomas">

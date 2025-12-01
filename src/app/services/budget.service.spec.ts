@@ -31,19 +31,22 @@ fdescribe('BudgetService', () => {
         id: 1,
         name: 'Seo',
         description: 'Optimización en motores de búsqueda',
-        price: 300
+        price: 300,
+        custom_details:false
       },
       {
         id: 2,
         name: 'Hosting',
         description: 'Alojamiento web anual',
-        price: 200
+        price: 200,
+        custom_details:false
       },
       {
         id: 3,
         name: 'Página web',
         description: 'Programación de una web responsive completa',
-        price: 500
+        price: 500,
+        custom_details:true
       }
     ];
 
