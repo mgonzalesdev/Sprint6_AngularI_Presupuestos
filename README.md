@@ -2,7 +2,7 @@
 
 Aplicación desarrollada en **Angular 20** que permite crear presupuestos dinámicos para distintos productos, incluyendo un módulo para calcular el coste de una página web basado en el número de páginas e idiomas.  
 La app soporta **sincronización de datos con la URL**, para que los presupuestos se puedan compartir fácilmente.
-
+<img src="./public/images/budget.png" alt="Descripción" width="80%" />
 ---
 
 ## 🚀 Tecnologías utilizadas
@@ -29,12 +29,10 @@ src/app
 │       iproduct.ts # Interface de producto
 │
 ├───pages
-│   ├───budgets/# Página de presupuesto con formulario y productos
 │   └───welcome/# Página principal de bienvenida
 └───services
         budget.service.spec.ts
         budget.ts # Servicio de presupuestos
-        products.spec.ts
         products.ts # Servicio de productos
 ```   
 ---
