@@ -1,7 +1,8 @@
 # 🧾 Presupuesto Web App
 
 Aplicación desarrollada en **Angular 20** que permite crear presupuestos dinámicos para distintos productos, incluyendo un módulo para calcular el coste de una página web basado en el número de páginas e idiomas.  
-La app soporta **sincronización de datos con la URL**, para que los presupuestos se puedan compartir fácilmente.
+La app soporta **sincronización de datos con la URL**, para que los presupuestos se puedan compartir fácilmente.  
+
 <img src="./public/images/budget.png" alt="Descripción" width="80%" />
 ---
 
@@ -80,7 +81,7 @@ Asegúrate de tener instalados:
    npm install
 ```
 
-### ▶️ Ejecución
+### ▶️ Ejecución  
 
 Inicia el servidor de desarrollo con:
 
@@ -92,4 +93,10 @@ Abre el navegador en:
 
 ```
 http://localhost:4200
+```
+
+### Demo
+
+```
+https://mgonzalesdev.github.io/Sprint6_AngularI_Presupuestos/mgonzalesdev.github.io/
 ```
